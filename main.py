@@ -31,18 +31,21 @@ def mode():
         if snake.head.distance(food) < 15:
             food.refresh()
             score.add_score()
+            snake.add_body_part()
     elif difficulty == "medium":
         time.sleep(.10)
         snake.move()
         if snake.head.distance(food) < 15:
             food.refresh()
             score.add_score()
+            snake.add_body_part()
     elif difficulty == "hard":
         time.sleep(.05)
         snake.move()
         if snake.head.distance(food) < 20:
             food.refresh()
             score.add_score()
+            snake.add_body_part()
 
 
 while game_on:
