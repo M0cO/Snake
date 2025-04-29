@@ -4,6 +4,9 @@ from food import Food
 from countdown import Countdown
 from scoreboard import Score
 import time
+EASY = .15
+MEDIUM = 10
+HARD = .05
 
 screen = Screen()
 difficulty = screen.textinput("Difficulty", "Select Difficulty: Easy, Medium, or Hard").lower()
@@ -24,29 +27,24 @@ screen.onkey(fun=snake.left, key="Left")
 screen.onkey(fun=snake.right, key="Right")
 
 game_on = True
+
+def the_game():
+    snake.move()
+    if snake.head.distance(food) < 15:
+        food.refresh()
+        score.add_score()
+        snake.add_body_part()
+
 def mode():
     if difficulty == "easy":
-        time.sleep(.15)
-        snake.move()
-        if snake.head.distance(food) < 15:
-            food.refresh()
-            score.add_score()
-            snake.add_body_part()
+        time.sleep(EASY)
+        the_game()
     elif difficulty == "medium":
-        time.sleep(.10)
-        snake.move()
-        if snake.head.distance(food) < 15:
-            food.refresh()
-            score.add_score()
-            snake.add_body_part()
+        time.sleep(MEDIUM)
+        the_game()
     elif difficulty == "hard":
-        time.sleep(.05)
-        snake.move()
-        if snake.head.distance(food) < 20:
-            food.refresh()
-            score.add_score()
-            snake.add_body_part()
-
+        time.sleep(HARD)
+        the_game()
 
 while game_on:
     screen.update()
@@ -54,7 +52,10 @@ while game_on:
     if snake.head.xcor() > 280 or snake.head.xcor() < -280 or snake.head.ycor() > 280 or snake.head.ycor() < -280:
         game_on = False
         score.game_over()
+        screen.update()
+        time.sleep(1.5)
         score.try_again()
+
     screen.update()
 
 
