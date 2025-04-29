@@ -19,6 +19,16 @@ class Snake:
             turtle.color("white")
             turtle.goto(0 - (i * 20), 0)
             self.tail_growth.append(turtle)
+    
+    def body_part(self, i):
+        turtle = Turtle(shape="square")
+        turtle.shapesize(stretch_wid=.95, stretch_len=.95)
+        turtle.penup()
+        turtle.color("white")
+        self.tail_growth.append(turtle)
+
+    def add_body_part(self):
+        self.body_part(self.tail_growth[-1])
 
     def move(self):
         for tail_num in range(len(self.tail_growth) - 1, 0, -1):
