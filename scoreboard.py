@@ -17,9 +17,6 @@ class Score(Turtle):
         self.goto(0,0)
         self.write("WOMP WOMP\nGAME OVER", align=CENTER, font=FONT)
 
-    def try_again(self):
-        self.screen.textinput("Retry", "Try Again? Yes or No")
-
     def updated_scoreboard(self):
         self.write(f"Score: {self.score}", align=CENTER, font=FONT)
 
