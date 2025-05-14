@@ -1,12 +1,10 @@
 from turtle import Turtle
-
 STEPS = 20
 UP = 90
 DOWN = 270
 LEFT = 180
 RIGHT = 0
 START = (40,0),(20,0),(60,0)
-
 
 class Snake:
     def __init__(self):
@@ -24,6 +22,14 @@ class Snake:
         new_segment.color("white")
         new_segment.goto(position)
         self.tail_growth.append(new_segment)
+
+    def reset(self):
+        for seg in self.tail_growth:
+            seg.goto(1000,1000)
+        self.tail_growth.clear()
+        self.body()
+        self.head = self.tail_growth[0]
+
 
     def add_body_part(self):
         self.body_part(self.tail_growth[-1].position())
