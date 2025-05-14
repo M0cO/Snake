@@ -51,13 +51,13 @@ while game_on:
     screen.update()
     mode()
     if snake.head.xcor() > 280 or snake.head.xcor() < -280 or snake.head.ycor() > 280 or snake.head.ycor() < -280:
-        game_on = False
-        score.game_over()
+        score.reset()
+        snake.reset()
 
     for tail_growth in snake.tail_growth[2:]:
         if snake.head.distance(tail_growth) < 10:
-            game_on = False
-            score.game_over()
+            score.reset()
+            snake.reset()
 
 
     screen.update()
